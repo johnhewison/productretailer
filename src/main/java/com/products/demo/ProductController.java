@@ -27,20 +27,32 @@ public class ProductController {
         this.productAuditService = productAuditService;
     }
 
+    @PutMapping(value = "/miniumstock/{productId}/{minimumstock}")
+    ResponseEntity setMinimumStockLevel(@PathVariable long productId, @PathVariable int minimumstock) {
+        productService.setMinimumStockLevel(productId, minimumstock);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @PutMapping(value = "/order/{productId}/{additionalVolume}")
-    ResponseEntity orderProducts(@PathVariable long productId, @PathVariable  int additionalVolume) {
+    ResponseEntity orderProducts(@PathVariable long productId, @PathVariable int additionalVolume) {
         productService.orderProducts(productId, additionalVolume);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping(value = "/block/{productId}")
-    ResponseEntity orderProducts(@PathVariable long productId) {
+    ResponseEntity blockProduct(@PathVariable long productId) {
         productService.blockProduct(productId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping(value = "/unblock/{productId}")
+    ResponseEntity unblockProduct(@PathVariable long productId) {
+        productService.unblockProduct(productId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @GetMapping(value = "/audit", produces = "text/csv")
-    public ResponseEntity audit(){
+    public ResponseEntity audit() {
         try {
             File file = productAuditService.generateReport();
 

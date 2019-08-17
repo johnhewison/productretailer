@@ -15,7 +15,7 @@ Implement a system to check the stock levels for the products sold by a retailer
 * The rules to be applied can be stored however you think is most appropriate.  
   * There should be a rule allowing specification of a minimum stock level for a product. I.e. product specific minimum stock level  
   * There should be a rule allowing products to be marked as blocked – i.e. they should not be reordered  
-  *It should be possible to add a rule to order an additional volume of a certain product  
+  * It should be possible to add a rule to order an additional volume of a certain product  
 * Optional: in addition to returning the output of the stock-check, the results should be persisted to a database to maintain an audit of the stock-check and recommended purchase history
 
 ### Example:
